@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import home from ' ./store/home'
+import home from './store/home'
 
 Vue.use(Vuex)
 
