@@ -28,9 +28,6 @@ export default {
   methods: {
     getid (id) {
 
-      console.log(id);
-      // console.log(this.tabs);
-
       if (id === 1) {
         this.tabs[0].icon = 'icon-yingsaitong';
         this.tabs[1].icon = 'icon-shuben-kongxin';
@@ -59,7 +56,7 @@ export default {
   flex-direction: column;
   height: 100%;
 
-  div:first-child {
+  > div:first-child {
     flex: 1;
     overflow-y: auto;
   }
