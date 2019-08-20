@@ -13,13 +13,11 @@
     </div>
     <div class="cq_main">
       <ul>
-        <li v-for="item in list" :key="item.id">
-          <!-- <router-link :to="item.path"> -->
+        <router-link :to="item.href" tag="li" v-for="item in list" :key="item.id">
           <span class="iconfont" :class="item.icons"></span>
           <p>{{item.text}}</p>
           <b class="iconfont">&#xe602;</b>
-          <!-- </router-link> -->
-        </li>
+        </router-link>
       </ul>
       <div class="cq_last">
         <span class="iconfont">&#xe7bd;</span>
@@ -38,10 +36,10 @@ export default {
   data() {
     return {
       list: [
-        { id: 1, text: '我的订单', icons: 'icon-place-order' },
-        { id: 2, text: '我的优惠券', icons: 'icon-youhuiquan' },
-        { id: 3, text: '我的购物车', icons: 'icon-tab_car' },
-        { id: 4, text: '我的学习卡', icons: 'icon-xuexiqia' }
+        { id: 1, text: '我的订单', icons: 'icon-place-order', href: '/cart' },
+        { id: 2, text: '我的优惠券', icons: 'icon-youhuiquan', href: '/cart' },
+        { id: 3, text: '我的购物车', icons: 'icon-tab_car', href: '/cart' },
+        { id: 4, text: '我的学习卡', icons: 'icon-xuexiqia', href: '/cart' }
       ]
     }
   }
@@ -49,7 +47,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.wrap {
+.cq_wrap {
   display: flex;
   flex-direction: column;
   background: #eee;

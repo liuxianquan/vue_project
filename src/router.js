@@ -41,6 +41,11 @@ export default new Router({
     {
       path: '/mysign',
       component: () => import('./views/mysign.vue')
+    },
+    {
+      //购物车
+      path: '/cart',
+      component: () => import('./views/acountlist/cart.vue')
     }
   ]
 })
