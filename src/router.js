@@ -46,6 +46,11 @@ export default new Router({
       //购物车
       path: '/cart',
       component: () => import('./views/acountlist/cart.vue')
+    },
+    {
+      //商品购买模块
+      path: '/shopping',
+      component: () => import('./views/acountlist/shopping.vue')
     }
   ]
 })
