@@ -1,6 +1,15 @@
 <template >
   <div class="myHome">
     <div class="myHomeHeader">
+<<<<<<< HEAD
+=======
+      <!-- <div class="logo">
+        <img
+          src="https://edu-image.nosdn.127.net/4413eae4-167f-40e4-84ee-5debff88df9c.png?imageView&quality=100"
+          alt
+        />
+      </div>-->
+>>>>>>> acount
       <div class="headerTitle">
         <img
           src="https://nos.netease.com/edu-image/a9333338-6b0e-4e56-a34a-77b2a2268b4a.png?imageView&quality=100"
@@ -91,6 +100,7 @@ export default {
     }
   }
 }
+<<<<<<< HEAD
 .category {
   display: flex;
   flex-wrap: wrap;
@@ -121,4 +131,6 @@ export default {
   height: 0.12rem;
   background-color: #f2f4f7;
 }
+=======
+>>>>>>> acount
 </style>
