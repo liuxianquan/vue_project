@@ -20,6 +20,14 @@
       </div>
     </div>
     <div class="divide"></div>
+    <div class="goodClass">
+      <h2>{{goodClassLists.sectionName}}</h2>
+      <div class="goodClassCell" v-for="(value, num) in goodClassLists.cellList" :key="num">
+        <img :src="value.photoUrl" alt />
+        <p>{{ value.name }}</p>
+      </div>
+    </div>
+    <div class="divide"></div>
   </div>
 </template>
 <script>
@@ -34,7 +42,8 @@ export default {
 
   computed: {
     ...mapGetters('myhome', ['bannerListImgs']),
-    ...mapGetters('myhome', ['categoryLists'])
+    ...mapGetters('myhome', ['categoryLists']),
+    ...mapGetters('myhome', ['goodClassLists'])
   },
   data () {
     return {
@@ -43,12 +52,14 @@ export default {
   },
   methods: {
     ...mapActions('myhome', ['getBannerList']),
-    ...mapActions('myhome', ['getCategoryList'])
+    ...mapActions('myhome', ['getCategoryList']),
+    ...mapActions('myhome', ['getGoodClassList'])
 
   },
   created () {
     this.getBannerList();
     this.getCategoryList();
+    this.getGoodClassList();
 
   },
 
@@ -120,5 +131,35 @@ export default {
   width: 100%;
   height: 0.12rem;
   background-color: #f2f4f7;
+}
+.goodClass {
+  margin: 0 0.1rem;
+  // height:6rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  h2 {
+    margin: 0.2rem 0 0.15rem 0;
+    width: 100%;
+    display: block;
+    height: 0.2rem;
+    font-size: 0.18rem;
+    text-indent: 0.1rem;
+  }
+  .goodClassCell {
+    width: 47.5%;
+    img {
+      width: 100%;
+      display: block;
+    }
+    p {
+      display: block;
+      height: 0.6rem;
+      margin-top: 0.1rem;
+      font-size: 0.16rem;
+      line-height: 0.16rem;
+      color: #3c4a55;
+    }
+  }
 }
 </style>
