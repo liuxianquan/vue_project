@@ -51,6 +51,14 @@ export default new Router({
       //商品购买模块
       path: '/shopping',
       component: () => import('./views/acountlist/shopping.vue')
+    },
+    {
+      path: '/myzhuce',
+      component: () => import('./views/myzhuce.vue')
+    },
+    {
+      path: '/mylogin',
+      component: () => import('./views/mylogin.vue')
     }
   ]
 })
