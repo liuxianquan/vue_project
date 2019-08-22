@@ -67,6 +67,7 @@ sliderText	String	Slide filled right	滑块底纹文字
 </template>
 <script>
 import { log } from 'util';
+import request from '../utils/request'
 export default {
   name: 'myzhouce',
   data () {
@@ -103,20 +104,36 @@ export default {
     },
     onRefresh () {
       this.msg = ''
+    },
+    getSigntest () {
+      console.log(123);
+
+      request.post('https://API_BASE_URL/1.1/requestSmsCode', {
+        "mobilePhoneNumber": "15976752027",
+        "ttl": "10",
+        "name": "testProject",
+        "op": "短信验证"
+      }
+        // ,{
+        //     "X-LC-Id": " Rnao9psWKAC2NL10IxSe5UTg-gzGzoHsz",
+        //     "X-LC-Key": "Us4LPnpE7TVQsESm1CdaaNyb",
+        //     "Content-Type": "application/json"
+        //   }
+      ).
+        then(data => {
+          // 请求成功，还需将后台返回的数据存放到 state 中
+          console.log('短信发送成功');
+
+        })
     }
   },
   computed: {
 
   },
   mounted () {
-    // this.$refs.slide.$el.childNodes[0].attributes.height.value = 0;
-    // this.$refs.slide.$el.childNodes[4].attributes.height.value = 0;
-
-    // this.$refs.slide.$el.childNodes[0].styley.opacity = 0;
+   
+    this.getSigntest();
   },
-  updated () {
-
-  }
 }
 
 </script>
