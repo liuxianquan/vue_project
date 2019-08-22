@@ -93,7 +93,7 @@ export default {
     onSuccess () {
       this.msg = '';
       this.$refs.slideSwape.style.overflow = 'hidden';
-      slideFlag = true;
+      this.slideFlag = true;
     },
     onFail () {
       this.msg = '请先拖动滑块进行安全验证'
