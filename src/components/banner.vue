@@ -37,7 +37,7 @@ export default {
      * 初始化 swiper
      */
     initSwiper () {
-      new Swiper('.swiper-container', {
+      new Swiper(this.$el, {
         loop: true,
         autoplay: {
           delay: 1000,

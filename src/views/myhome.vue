@@ -12,7 +12,7 @@
         <i class="iconfont icon-tubiao01"></i>
       </div>
     </div>
-    <banner ref="myBanner" :imgs="bannerListImgs" v-if="bannerListImgs.length > 0" />
+    <banner ref="myBanner" :imgs="bannerListImgs " v-if="bannerListImgs.length > 0" />
     <div class="category">
       <div class="category-cell" v-for="(category, index) in categoryLists" :key="index">
         <img :src="category.photoUrl" alt />
