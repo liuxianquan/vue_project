@@ -74,7 +74,6 @@ export default {
       msg: '',
       text: '向右滑',
       slideFail: false,
-      slideFlag: false
     }
   },
   methods: {
@@ -93,12 +92,13 @@ export default {
     onSuccess () {
       this.msg = '';
       this.$refs.slideSwape.style.overflow = 'hidden';
-      this.slideFlag = true;
+      this.slideFail = false;
     },
     onFail () {
       this.msg = '请先拖动滑块进行安全验证'
       //   console.log(this.$el);
-      this.slideFail = true
+      this.slideFail = true;
+
 
     },
     onRefresh () {
