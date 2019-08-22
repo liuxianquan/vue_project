@@ -1,6 +1,6 @@
 <template>
   <div class="wrap">
-    <div class="while" v-if="cats.length<1">
+    <div class="while" v-if="cats.length < 1">
       <p>
         好好学习，天天向上，看到喜欢的课程，点击
         <br />【加入购物车】，在这里合并购买
@@ -49,7 +49,7 @@
           </p>
           <p>若有优惠, 将在订单结算页面减扣</p>
         </div>
-        <button>去结算</button>
+        <button :disabled="total <= 0">去结算</button>
       </div>
     </div>
   </div>
@@ -223,11 +223,14 @@ export default {
   }
   button {
     width: 0.9rem;
-    background: #ced1da;
-    border: 1px solid #ccc;
-    cursor: pointer;
+    background: orangered;
     color: #fff;
+    border: 1px solid #ccc;
+    outline: none;
     font-size: 0.14rem;
+  }
+  button:disabled {
+    background: #ced1da;
   }
 }
 </style>

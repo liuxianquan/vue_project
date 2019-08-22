@@ -17,6 +17,7 @@
           <span class="iconfont" :class="item.icons"></span>
           <p>{{item.text}}</p>
           <b class="iconfont">&#xe602;</b>
+          <i v-if="cats.length > 0">{{cats.length}}</i>
         </router-link>
       </ul>
       <div class="cq_last">
@@ -28,6 +29,8 @@
   </div>
 </template>
 <script>
+import { mapState } from 'vuex'
+
 export default {
   data() {
     return {
@@ -38,6 +41,9 @@ export default {
         { id: 4, text: '我的学习卡', icons: 'icon-xuexiqia', href: '/shopping' }
       ]
     }
+  },
+  computed: {
+    ...mapState('cat', ['cats'])
   }
 }
 </script>
@@ -98,6 +104,7 @@ export default {
     display: flex;
     align-items: center;
     font-size: 0.16rem;
+    position: relative;
     span {
       width: 0.42rem;
       text-align: center;
@@ -111,6 +118,18 @@ export default {
     b {
       margin-right: 0.1rem;
       color: #ccc;
+    }
+    i {
+      position: absolute;
+      right: 0.4rem;
+      width: 0.2rem;
+      height: 0.2rem;
+      background: #ff4400;
+      color: #ffffff;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 0.2rem;
+      font-style: normal;
     }
   }
   ul > li {
