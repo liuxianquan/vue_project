@@ -29,10 +29,6 @@
 </template>
 <script>
 export default {
-  // name: 'myacount',
-  // components: {
-  //   Tabbar
-  // },
   data() {
     return {
       list: [

@@ -1,11 +1,17 @@
 <template>
   <div class="wrap">
     <div class="main">
-      <p>英语私教课</p>
-      <p>￥365</p>
+      <ul>
+        <li v-for="item in shoplist" :key="item.productId">
+          <img :src="item.bigPhotoUrl" alt />
+          <h5>{{item.ownerName}}</h5>
+          <p>{{item.productName}}</p>
+          <p>售价：{{item.price}}</p>
+        </li>
+      </ul>
     </div>
     <div class="shop">
-      <div class="shop_left">
+      <div class="shop_left" @click="add(shoplist)">
         <span class="iconfont">&#xe605;</span>
         <p>加入购物车</p>
       </div>
@@ -17,7 +23,18 @@
 </template>
 
 <script>
-export default {}
+import { mapState, mapMutations } from 'vuex'
+
+export default {
+  name: 'shopping',
+  computed: {
+    ...mapState('product', ['shoplist'])
+  },
+
+  methods: {
+    ...mapMutations('cat', ['add'])
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -29,10 +46,21 @@ export default {}
   .main {
     flex: 1;
     overflow-y: auto;
-    p {
-      font-size: 0.24rem;
-      line-height: 0.3rem;
-      text-align: center;
+    li {
+      padding: 0.1rem;
+      img {
+        width: 100%;
+        height: 3rem;
+      }
+      h5 {
+        font-size: 0.2rem;
+        line-height: 0.3rem;
+      }
+      p {
+        font-size: 0.16rem;
+        line-height: 0.2rem;
+        color: blue;
+      }
     }
   }
   .shop {

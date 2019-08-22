@@ -39,7 +39,6 @@ export default {
 
           // 跳转页面， 默认跳转到 个人中心页
           let redirect = router.currentRoute.query.redirect || '/mysign'
-          // let redirect = '/mysign'
 
           router.replace(redirect)
         } else {

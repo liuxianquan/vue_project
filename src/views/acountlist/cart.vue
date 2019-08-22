@@ -1,85 +1,118 @@
 <template>
   <div class="wrap">
-    <div class="header">
+    <div class="while" v-if="cats.length<1">
       <p>
-        共
-        <span>1</span>门课程
+        好好学习，天天向上，看到喜欢的课程，点击
+        <br />【加入购物车】，在这里合并购买
       </p>
     </div>
-    <div class="main">
-      <div class="while">
+    <div class="content" v-if="cats.length">
+      <div class="header">
         <p>
-          好好学习，天天向上，看到喜欢的课程，点击
-          <br />【加入购物车】，在这里合并购买
+          共
+          <span>{{cats.length}}</span>
+          门课程
         </p>
       </div>
-      <div class="full">
-        <dl>
-          <dt>
-            <input type="checkbox" />
-            <span>赵铁夫</span>
-          </dt>
-          <dd>
-            <input type="checkbox" />
-            <img src="../../../public/images/pagou.jpg" alt />
-            <div class="box">
-              <p>设计费龙卷风金粉世家删繁就简删繁就简</p>
-              <p>永久有效</p>
-              <p>￥199.00</p>
-            </div>
-            <span>删除</span>
-          </dd>
-          <dd>
-            <p>
-              该机构小计：
-              <span>￥0.00</span>
-            </p>
-          </dd>
-        </dl>
-        <dl>
-          <dt>
-            <input type="checkbox" />
-            <span>赵铁夫</span>
-          </dt>
-          <dd>
-            <input type="checkbox" />
-            <img src="../../../public/images/pagou.jpg" alt />
-            <div class="box">
-              <p>设计费龙卷风金粉世家删繁就简删繁就简</p>
-              <p>永久有效</p>
-              <p>￥199.00</p>
-            </div>
-            <span>删除</span>
-          </dd>
-          <dd>
-            <p>
-              该机构小计：
-              <span>￥0.00</span>
-            </p>
-          </dd>
-        </dl>
+      <div class="main">
+        <div class="full">
+          <dl v-for="item in cats" :key="item.productId">
+            <dt>
+              <input type="checkbox" :value="item.productId" v-model="checkedIds" />
+              <span>{{item.ownerName}}</span>
+            </dt>
+            <dd>
+              <input type="checkbox" :value="item.productId" v-model="checkedIds" />
+              <img :src="item.bigPhotoUrl" alt />
+              <div class="box">
+                <p>{{item.productName}}</p>
+                <p>永久有效</p>
+                <p>￥{{item.price}}.00</p>
+              </div>
+              <span @click="remove(item)">删除</span>
+            </dd>
+            <dd>
+              <p>
+                该机构小计：
+                <span>￥{{item.priceAfterPackage}}.00</span>
+              </p>
+            </dd>
+          </dl>
+        </div>
       </div>
-    </div>
-    <div class="footer">
-      <input type="checkbox" />
-      <div class="tox">
-        <p>
-          合计：
-          <span>￥0.00</span>
-        </p>
-        <p>若有优惠, 将在订单结算页面减扣</p>
+      <div class="footer">
+        <input type="checkbox" v-model="isAllCheck" />
+        <div class="tox">
+          <p>
+            合计：
+            <span>￥{{total}}.00</span>
+          </p>
+          <p>若有优惠, 将在订单结算页面减扣</p>
+        </div>
+        <button>去结算</button>
       </div>
-      <button>去结算</button>
     </div>
   </div>
 </template>
 
+<script>
+import { mapState, mapGetters, mapMutations } from 'vuex'
+export default {
+  name: 'cart',
+  computed: {
+    ...mapState('cat', ['cats', 'msg']),
+    ...mapGetters('cat', ['total']),
+    isAllCheck: {
+      get() {
+        return this.$store.getters['cat/isAllCheck']
+      },
+      set(value) {
+        this.$store.commit('cat/toggleCheck', value)
+      }
+    },
+    checkedIds: {
+      get() {
+        return this.$store.state.cat.checkedIds
+      },
+      set(value) {
+        this.$store.commit('cat/setCheckedIds', value)
+      }
+    }
+  },
+  methods: {
+    ...mapMutations('cat', ['remove'])
+  }
+}
+</script>
 <style lang="scss">
 .wrap {
   width: 100%;
   height: 100%;
+}
+.content {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
+}
+.while {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  p {
+    width: 3rem;
+    height: 0.36rem;
+    text-align: center;
+    color: #3c4a55;
+    font-size: 0.14rem;
+    line-height: 0.18rem;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
 }
 .header {
   height: 0.4rem;
@@ -164,26 +197,6 @@
 .main {
   flex: 1;
   overflow-y: auto;
-  .while {
-    display: none;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    p {
-      width: 3rem;
-      height: 0.36rem;
-      text-align: center;
-      color: #3c4a55;
-      font-size: 0.14rem;
-      line-height: 0.18rem;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      margin: auto;
-    }
-  }
 }
 .footer {
   background: #fafafa;

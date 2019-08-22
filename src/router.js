@@ -61,6 +61,7 @@ const routes = [
     component: () => import('./views/myzhuce.vue')
   },
   {
+    //登录页面
     path: '/mylogin',
     component: () => import('./views/mylogin.vue')
   }
@@ -84,7 +85,7 @@ router.beforeEach((to, from, next) => {
     } else {
       // 不存在，去登录
       next({
-        path: '/login',
+        path: '/mylogin',
         query: {
           redirect: to.fullPath
         }
