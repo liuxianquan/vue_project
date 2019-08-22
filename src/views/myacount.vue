@@ -29,10 +29,10 @@
 </template>
 <script>
 export default {
-  data() {
+  data () {
     return {
       list: [
-        { id: 1, text: '我的订单', icons: 'icon-place-order', href: '/cart' },
+        { id: 1, text: '我的订单', icons: 'icon-place-order', href: '/order' },
         { id: 2, text: '我的优惠券', icons: 'icon-youhuiquan', href: '/cart' },
         { id: 3, text: '我的购物车', icons: 'icon-tab_car', href: '/cart' },
         { id: 4, text: '我的学习卡', icons: 'icon-xuexiqia', href: '/shopping' }

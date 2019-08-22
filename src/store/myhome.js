@@ -65,7 +65,6 @@ export default {
       request.get('http://localhost:3000/result').then(data => {
         // 请求成功，还需将后台返回的数据存放到 state 中
         commit('setGoodClassList', data.sectionDtoList[0])
-        console.log(data.sectionDtoList[0].elementDtoList)
       })
     }
   }
