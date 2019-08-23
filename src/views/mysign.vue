@@ -34,7 +34,6 @@
 </template>
 <script>
 import axios from 'axios'
-console.log(axios)
 export default {
 }
 </script>
