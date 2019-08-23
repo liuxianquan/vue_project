@@ -6,7 +6,7 @@ export default {
 
   state: {
     msg: 'buy',
-    cats: [],
+    cats: cats ? JSON.parse(cats) : [],
     checkedIds: []
   },
 
@@ -59,6 +59,7 @@ export default {
         item => item.productId === payload.productId
       )
       state.cats.splice(index, 1)
+      window.localStorage.setItem('cats', JSON.stringify(state.cats))
     },
 
     // 向购物车中添加商品
@@ -73,11 +74,13 @@ export default {
         alert('一套终身够用，无需再买')
       } else {
         // 不存在 ，将当前商品push到购物车中即可
-        alert('学海无涯')
+        alert('添加成功，学海无涯')
         let obj = { ...payload[0] }
         obj.num = 1
         state.cats.push(obj)
       }
+      // 弄到 本地 localStorage 中去
+      window.localStorage.setItem('cats', JSON.stringify(state.cats))
     }
   }
 }
