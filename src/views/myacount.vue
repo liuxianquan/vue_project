@@ -17,7 +17,7 @@
           <span class="iconfont" :class="item.icons"></span>
           <p>{{item.text}}</p>
           <b class="iconfont">&#xe602;</b>
-          <i v-if="cats.length > 0">{{cats.length}}</i>
+          <i v-if="cats.length > 0 && item.href === '/cart'">{{cats.length}}</i>
         </router-link>
       </ul>
       <div class="cq_last">
