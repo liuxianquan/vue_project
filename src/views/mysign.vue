@@ -3,7 +3,7 @@
     <div class="login_top">
       <img src="../images/xing01.png" alt />
       <a href="http://localhost:8080/#/mylogin" class="get_login">手机号登录</a>
-      <a href="#" class="set_login">手机号快捷注册</a>
+      <a href="http://localhost:8080/#/myzhuce" class="set_login">手机号快捷注册</a>
     </div>
     <div class="login_bottom">
       <div class="login_math">

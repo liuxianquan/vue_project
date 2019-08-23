@@ -2,6 +2,7 @@
 
 // 1. 引入 axios
 import axios from 'axios'
+import store from '../store/home'
 
 // 2. 创建一个 axios 的实例对象
 const request = axios.create({
