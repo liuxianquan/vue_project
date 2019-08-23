@@ -15,14 +15,6 @@ sliderText	String	Slide filled right	滑块底纹文字
 原文链接：https://blog.csdn.net/monoplasty/article/details/85016089 
     -->
     <div class="slideSwape" ref="slideSwape" style="height: 0.42rem;overflow: hidden;">
-      <!-- <div data-v-6dd9a078 class="slide-verify-slider">
-        <div data-v-6dd9a078 class="slide-verify-slider-mask" style="width: 0px;">
-          <div data-v-6dd9a078 class="slide-verify-slider-mask-item" style="left: 0px;">
-            <div data-v-6dd9a078 class="slide-verify-slider-mask-item-icon"></div>
-          </div>
-        </div>
-        <span data-v-6dd9a078 class="slide-verify-slider-text">向右滑</span>
-      </div>-->
       <slide-verify
         :l="42"
         :r="10"
@@ -106,32 +98,32 @@ export default {
       this.msg = ''
     },
     getSigntest () {
-      console.log(123);
+      // console.log(123);
 
-      request.post('https://API_BASE_URL/1.1/requestSmsCode', {
-        "mobilePhoneNumber": "15976752027",
-        "ttl": "10",
-        "name": "testProject",
-        "op": "短信验证"
-      }
-        // ,{
-        //     "X-LC-Id": " Rnao9psWKAC2NL10IxSe5UTg-gzGzoHsz",
-        //     "X-LC-Key": "Us4LPnpE7TVQsESm1CdaaNyb",
-        //     "Content-Type": "application/json"
-        //   }
-      ).
-        then(data => {
-          // 请求成功，还需将后台返回的数据存放到 state 中
-          console.log('短信发送成功');
+      // // request.post('https://API_BASE_URL/1.1/requestSmsCode', {
+      // //   "mobilePhoneNumber": "15976752027",
+      // //   "ttl": "10",
+      // //   "name": "testProject",
+      // //   "op": "短信验证"
+      // // }
+      //   // ,{
+      //   //     "X-LC-Id": " Rnao9psWKAC2NL10IxSe5UTg-gzGzoHsz",
+      //   //     "X-LC-Key": "Us4LPnpE7TVQsESm1CdaaNyb",
+      //   //     "Content-Type": "application/json"
+      //   //   }
+      // ).
+      // then(data => {
+      //   // 请求成功，还需将后台返回的数据存放到 state 中
+      //   console.log('短信发送成功');
 
-        })
+      // })
     }
   },
   computed: {
 
   },
   mounted () {
-   
+
     this.getSigntest();
   },
 }

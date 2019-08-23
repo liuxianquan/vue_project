@@ -64,6 +64,11 @@ const routes = [
     //登录页面
     path: '/mylogin',
     component: () => import('./views/mylogin.vue')
+  },
+  {
+    //登录页面
+    path: '/order',
+    component: () => import('./views/acountlist/order.vue')
   }
 ]
 
@@ -72,12 +77,9 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  console.log(111)
-
   // 判断将要去的路由是否需要登录状态
   if (to.meta.needLogin) {
     // 登录状态的校验
-    console.log(222)
 
     if (store.state.user.userInfo) {
       // 放行

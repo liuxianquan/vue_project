@@ -2,6 +2,7 @@
 
 // 1. 引入 axios
 import axios from 'axios'
+import store from '../store/home'
 
 // 2. 创建一个 axios 的实例对象
 const request = axios.create({
@@ -10,6 +11,14 @@ const request = axios.create({
 })
 
 // 3. 在这还可以实现一些我们的拦截功能
+// 请求拦截
+request.interceptors.request.use(config => {
+  // 将token携带在请求头上。
+  if (store.state.user.token) {
+    config.headers['Access_Token'] = store.state.user.token
+  }
+  return config
+})
 
 // 3.1 响应拦截
 //    3.1.1 直接将 response.data 给返回出去，以方便外面调用时还得 .data

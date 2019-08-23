@@ -1,16 +1,15 @@
 <template >
   <div class="cq_wrap">
     <!-- <h1>这是我的账号</h1> -->
-    <div class="cq_header">
+    <router-link to="/mysign" class="cq_header">
       <p>
-        <img src="../../public/images/pagou.jpg" />
+        <img :src="userInfo.avatar" />
       </p>
       <dl>
-        <dt>一曲入魂</dt>
-        <dd>正在使用QQ登录</dd>
+        <dt>{{userInfo.username}}</dt>
       </dl>
       <b class="iconfont">&#xe602;</b>
-    </div>
+    </router-link>
     <div class="cq_main">
       <ul>
         <router-link :to="item.href" tag="li" v-for="item in list" :key="item.id">
@@ -32,10 +31,17 @@
 import { mapState } from 'vuex'
 
 export default {
-  data() {
+  data () {
     return {
+      userInfo:
+        JSON.parse(localStorage.getItem('userInfo')) ?
+          JSON.parse(localStorage.getItem('userInfo')) :
+          {
+            avatar: 'https://edu-image.nosdn.127.net/7c5a8d29-ce20-4f97-a3a6-49872772667d.png?imageView&quality=100&thumbnail=100y100',
+            username: '登录/注册',
+          },
       list: [
-        { id: 1, text: '我的订单', icons: 'icon-place-order', href: '/cart' },
+        { id: 1, text: '我的订单', icons: 'icon-place-order', href: '/order' },
         { id: 2, text: '我的优惠券', icons: 'icon-youhuiquan', href: '/cart' },
         { id: 3, text: '我的购物车', icons: 'icon-tab_car', href: '/cart' },
         { id: 4, text: '我的学习卡', icons: 'icon-xuexiqia', href: '/shopping' }
@@ -43,7 +49,10 @@ export default {
     }
   },
   computed: {
-    ...mapState('cat', ['cats'])
+    ...mapState('cat', ['cats']),
+    getUsername () {
+      return this.userInfo = JSON.parse(localStorage.getItem('userInfo'))
+    }
   }
 }
 </script>
