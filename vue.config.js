@@ -1,7 +1,7 @@
 module.exports = {
   devServer: {
     proxy: {
-      '/api': {
+      '/tapi': {
         target: 'http://localhost:9090',
         changeOrigin: true
       }

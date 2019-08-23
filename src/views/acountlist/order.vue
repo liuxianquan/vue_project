@@ -7,7 +7,7 @@ export default {
   name: 'Money',
 
   created () {
-    request.post('http://localhost:8080/api/getorder').then(res => {
+    request.post('http://localhost:8080/tapi/getorder').then(res => {
       console.log(res)
 
     })

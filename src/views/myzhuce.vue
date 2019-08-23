@@ -2,7 +2,7 @@
   <div class="box">
     <div class="iptbox">
       <div class="u_logo"></div>
-      <input type="text" class="ipt1" placeholder="请输入手机号" />
+      <input type="text" class="ipt1" placeholder="请输入手机号"  v-model="username"/>
     </div>
     <!-- 参数	类型	默认值	描述
 l	Number	42	滑块的边长
@@ -31,25 +31,26 @@ sliderText	String	Slide filled right	滑块底纹文字
     </div>
 
     <div class="duanxing">
-      <input type="text" class="ipt2" placeholder="请输入短信验证码" />
-      <div class="huoqu">
+      <input type="text" class="ipt2" placeholder="请输入短信验证码" v-model="messageNumber" />
+      <div class="huoqu" @click="sendMessage">
         <a href="#" class="pcbtn">获取验证码</a>
       </div>
     </div>
     <div class="mima">
       <div class="u_logo_img2"></div>
-      <input type="text" placeholder="请输入密码" class="ipt3" />
+      <input type="text" placeholder="请输入密码" class="ipt3" v-model="password" />
     </div>
     <div class="slideMeg" v-if="slideFail">
       <i class="iconfont icon-hongcha"></i>
       {{msg}}
     </div>
 
-    <div class="loginbox">
-      <a href="#">注册</a>
-    </div>
+    <button class="loginbox"    :disabled="!username || !password ||!slideFlag||!mycheck " 
+    @click="handlezhuce()"
+    ><a href="#">注册</a>
+    </button>
     <div class="fur_agree">
-      <input type="checkbox" class="mycheck" />
+      <input type="checkbox" class="mycheck"  v-model="mycheck"/>
       <span>我同意</span>
       <a href="#">《用户使用协议》</a>
       <a href="#">和</a>
@@ -60,6 +61,15 @@ sliderText	String	Slide filled right	滑块底纹文字
 <script>
 import { log } from 'util';
 import request from '../utils/request'
+import router from '../router'
+import { Toast } from 'vant'
+// import AV from 'leancloud-storage/dist/av-weapp-min.js'
+import AV from 'leancloud-storage'
+
+var appId = 'Rnao9psWKAC2NL10IxSe5UTg-gzGzoHsz';  // 你的应用 appid
+var appKey = 'Us4LPnpE7TVQsESm1CdaaNyb'; // 你的应用 appkey
+AV.init({ appId: appId, appKey: appKey });
+
 export default {
   name: 'myzhouce',
   data () {
@@ -67,64 +77,89 @@ export default {
       msg: '',
       text: '向右滑',
       slideFail: false,
+      slideFlag: false,
+      username:'',
+      password:'',
+      messageNumber:'',
+      mycheck:false
     }
   },
   methods: {
     getSlide () {
-
       this.$refs.slideSwape.style.overflow = 'visible';
-      console.log(1);
-
-
     },
     lostSlide () {
       this.$refs.slideSwape.style.overflow = 'hidden';
-      console.log(2);
-
     },
     onSuccess () {
       this.msg = '';
       this.$refs.slideSwape.style.overflow = 'hidden';
       this.slideFail = false;
+      this.slideFlag =true;
     },
     onFail () {
       this.msg = '请先拖动滑块进行安全验证'
       //   console.log(this.$el);
       this.slideFail = true;
-
-
     },
     onRefresh () {
       this.msg = ''
     },
-    getSigntest () {
-      // console.log(123);
-
-      // // request.post('https://API_BASE_URL/1.1/requestSmsCode', {
-      // //   "mobilePhoneNumber": "15976752027",
-      // //   "ttl": "10",
-      // //   "name": "testProject",
-      // //   "op": "短信验证"
-      // // }
-      //   // ,{
-      //   //     "X-LC-Id": " Rnao9psWKAC2NL10IxSe5UTg-gzGzoHsz",
-      //   //     "X-LC-Key": "Us4LPnpE7TVQsESm1CdaaNyb",
-      //   //     "Content-Type": "application/json"
-      //   //   }
-      // ).
-      // then(data => {
-      //   // 请求成功，还需将后台返回的数据存放到 state 中
-      //   console.log('短信发送成功');
-
-      // })
-    }
+    sendMessage(){
+      let signUsername =this.username
+      console.log('准备发送短信');
+      console.log(signUsername);
+      
+      
+     AV.Cloud.requestSmsCode({
+      mobilePhoneNumber: signUsername,
+      name: '变帅',
+      // validate_token: validateCode,
+      op: '搭讪',
+      ttl: 30
+      }).then(function(){
+        //发送成功
+        console.log('发送成功')
+      }, function(err){
+        //发送失败
+        console.log('发送失败。' + err.message)
+    })
   },
+    handlezhuce() {
+      console.log(123)
+      let signUsername =this.username
+      let signPassword =this.password
+      let duanxin = this.messageNumber
+      console.log(
+      '进入验证程序'
+      );
+      AV.Cloud.verifySmsCode(duanxin, signUsername).then(function(){
+        //验证成功
+        console.log('验证成功');
+         request.post('http://localhost:8080/tapi/sign-up', {username:signUsername,password :signPassword}).then(res => {
+        if (res.code === 0) {
+          Toast('已经注册成功')       
+          // 跳转页面， 默认跳转到 个人中心页
+          router.replace('/myhome')
+        } else {
+          // 登录失败
+          Toast(res.msg)
+        }
+      })
+        
+      }, function(err){
+          //验证失败
+          console.log(err);
+      });
+  }
+    },
+    
   computed: {
 
   },
   mounted () {
 
-    this.getSigntest();
+  
   },
 }
 

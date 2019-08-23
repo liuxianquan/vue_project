@@ -27,7 +27,7 @@ export default {
      * 登录
      */
     handleLogin({ commit }, payload) {
-      request.post('http://localhost:8080/api/sign-in', payload).then(res => {
+      request.post('http://localhost:8080/tapi/sign-in', payload).then(res => {
         console.log(router)
         if (res.code === 0) {
           // 登录成功 存储到仓库
@@ -38,7 +38,7 @@ export default {
           localStorage.setItem('token', res.data.token)
 
           // 跳转页面， 默认跳转到 个人中心页
-          let redirect = router.currentRoute.query.redirect || '/mysign'
+          let redirect = router.currentRoute.query.redirect || '/myhome'
 
           router.replace(redirect)
         } else {
