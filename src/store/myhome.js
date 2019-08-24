@@ -7,15 +7,15 @@ export default {
 
   state: {
     bannerList: [], // 轮播图数据
-    categoryList: [], //课程分类数据
+    categoryList: [], // 课程分类数据
     goodClassList: {}
   },
 
   getters: {
-    bannerListImgs(state) {
+    bannerListImgs (state) {
       return state.bannerList.map(item => item.photoUrl)
     },
-    categoryLists(state) {
+    categoryLists (state) {
       return state.categoryList.map(item => {
         let arr = { name: '', photoUrl: '' }
         arr.name = item.name
@@ -24,7 +24,7 @@ export default {
       })
     },
 
-    goodClassLists(state) {
+    goodClassLists (state) {
       let Data = state.goodClassList.elementDtoList
       return {
         sectionName: state.goodClassList.sectionName,
@@ -34,13 +34,13 @@ export default {
   },
 
   mutations: {
-    setBannerList(state, payload) {
+    setBannerList (state, payload) {
       state.bannerList = payload
     },
-    setCategoryList(state, payload) {
+    setCategoryList (state, payload) {
       state.categoryList = payload
     },
-    setGoodClassList(state, payload) {
+    setGoodClassList (state, payload) {
       state.goodClassList = payload
     }
   },
@@ -49,19 +49,19 @@ export default {
     /**
      * 获取轮播图的数据
      */
-    getBannerList({ commit }) {
+    getBannerList ({ commit }) {
       request.get('http://localhost:3000/result').then(data => {
         // 请求成功，还需将后台返回的数据存放到 state 中
         commit('setBannerList', data.focusDtoList)
       })
     },
-    getCategoryList({ commit }) {
+    getCategoryList ({ commit }) {
       request.get('http://localhost:3000/result').then(data => {
         // 请求成功，还需将后台返回的数据存放到 state 中
         commit('setCategoryList', data.iconDtoList)
       })
     },
-    getGoodClassList({ commit }) {
+    getGoodClassList ({ commit }) {
       request.get('http://localhost:3000/result').then(data => {
         // 请求成功，还需将后台返回的数据存放到 state 中
         commit('setGoodClassList', data.sectionDtoList[0])

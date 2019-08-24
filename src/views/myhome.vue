@@ -32,7 +32,7 @@
 </template>
 <script>
 import banner from '../components/banner'
-import { mapActions, mapMutations, mapState, mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'myhome',
 
@@ -57,11 +57,10 @@ export default {
 
   },
   created () {
-    this.getBannerList();
-    this.getCategoryList();
-    this.getGoodClassList();
-
-  },
+    this.getBannerList()
+    this.getCategoryList()
+    this.getGoodClassList()
+  }
 
 }
 </script>

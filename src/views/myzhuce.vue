@@ -4,16 +4,8 @@
       <div class="u_logo"></div>
       <input type="text" class="ipt1" placeholder="请输入手机号" v-model="username" />
     </div>
-    <!-- 参数	类型	默认值	描述
-l	Number	42	滑块的边长
-r	Number	10	滑块突出圆的半径
-w	Number	310	canvas画布的宽
-h	Number	155	canvas画布的高
-sliderText	String	Slide filled right	滑块底纹文字
- ———————————————— 
-版权声明：本文为CSDN博主「monoplasty」的原创文章，遵循CC 4.0 by-sa版权协议，转载请附上原文出处链接及本声明。
-原文链接：https://blog.csdn.net/monoplasty/article/details/85016089 
-    -->
+    <!-- 版权声明：本文为CSDN博主「monoplasty」的原创文章，遵循CC 4.0 by-sa版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/monoplasty/article/details/85016089-->
     <div class="slideSwape" ref="slideSwape" style="height: 0.42rem;overflow: hidden;">
       <slide-verify
         :l="42"
@@ -62,16 +54,16 @@ sliderText	String	Slide filled right	滑块底纹文字
   </div>
 </template>
 <script>
-import { log } from 'util';
+// import { log } from 'util'
 import request from '../utils/request'
 import router from '../router'
 import { Toast } from 'vant'
 // import AV from 'leancloud-storage/dist/av-weapp-min.js'
 import AV from 'leancloud-storage'
 
-var appId = 'Rnao9psWKAC2NL10IxSe5UTg-gzGzoHsz';  // 你的应用 appid
-var appKey = 'Us4LPnpE7TVQsESm1CdaaNyb'; // 你的应用 appkey
-AV.init({ appId: appId, appKey: appKey });
+var appId = 'Rnao9psWKAC2NL10IxSe5UTg-gzGzoHsz' // 你的应用 appid
+var appKey = 'Us4LPnpE7TVQsESm1CdaaNyb' // 你的应用 appkey
+AV.init({ appId: appId, appKey: appKey })
 
 export default {
   name: 'myzhouce',
@@ -89,30 +81,29 @@ export default {
   },
   methods: {
     getSlide () {
-      this.$refs.slideSwape.style.overflow = 'visible';
+      this.$refs.slideSwape.style.overflow = 'visible'
     },
     lostSlide () {
-      this.$refs.slideSwape.style.overflow = 'hidden';
+      this.$refs.slideSwape.style.overflow = 'hidden'
     },
     onSuccess () {
-      this.msg = '';
-      this.$refs.slideSwape.style.overflow = 'hidden';
-      this.slideFail = false;
-      this.slideFlag = true;
+      this.msg = ''
+      this.$refs.slideSwape.style.overflow = 'hidden'
+      this.slideFail = false
+      this.slideFlag = true
     },
     onFail () {
       this.msg = '请先拖动滑块进行安全验证'
       //   console.log(this.$el);
-      this.slideFail = true;
+      this.slideFail = true
     },
     onRefresh () {
       this.msg = ''
     },
     sendMessage () {
       let signUsername = this.username
-      console.log('准备发送短信');
-      console.log(signUsername);
-
+      console.log('准备发送短信')
+      console.log(signUsername)
 
       AV.Cloud.requestSmsCode({
         mobilePhoneNumber: signUsername,
@@ -121,10 +112,10 @@ export default {
         op: '搭讪',
         ttl: 30
       }).then(function () {
-        //发送成功
+        // 发送成功
         console.log('发送成功')
       }, function (err) {
-        //发送失败
+        // 发送失败
         console.log('发送失败。' + err.message)
       })
     },
@@ -135,10 +126,10 @@ export default {
       let duanxin = this.messageNumber
       console.log(
         '进入验证程序'
-      );
+      )
       AV.Cloud.verifySmsCode(duanxin, signUsername).then(function () {
-        //验证成功
-        console.log('验证成功');
+        // 验证成功
+        console.log('验证成功')
         request.post('http://localhost:8080/tapi/sign-up', { username: signUsername, password: signPassword }).then(res => {
           if (res.code === 0) {
             Toast('已经注册成功')
@@ -149,11 +140,10 @@ export default {
             Toast(res.msg)
           }
         })
-
       }, function (err) {
-        //验证失败
-        console.log(err);
-      });
+        // 验证失败
+        console.log(err)
+      })
     }
   },
 
@@ -162,12 +152,10 @@ export default {
   },
   mounted () {
 
-
-  },
+  }
 }
 
 </script>
-
 
 <style lang="scss">
 .box {

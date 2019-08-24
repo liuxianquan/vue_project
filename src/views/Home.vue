@@ -21,29 +21,27 @@ export default {
       tabs: [
         { id: 1, name: '首页', icon: 'icon-yingsaitong', href: '/myhome' },
         { id: 2, name: '我的学习', icon: 'icon-shuben-kongxin', href: '/mystudy' },
-        { id: 3, name: '账号', icon: 'icon-zhang', href: '/myacount' },
+        { id: 3, name: '账号', icon: 'icon-zhang', href: '/myacount' }
       ]
     }
   },
   methods: {
     getid (id) {
-
       if (id === 1) {
-        this.tabs[0].icon = 'icon-yingsaitong';
-        this.tabs[1].icon = 'icon-shuben-kongxin';
+        this.tabs[0].icon = 'icon-yingsaitong'
+        this.tabs[1].icon = 'icon-shuben-kongxin'
         this.tabs[2].icon = 'icon-zhang'
       }
       if (id === 2) {
-        this.tabs[0].icon = 'icon-shouye1';
-        this.tabs[1].icon = 'icon-shuben-shixin';
+        this.tabs[0].icon = 'icon-shouye1'
+        this.tabs[1].icon = 'icon-shuben-shixin'
         this.tabs[2].icon = 'icon-zhang'
       }
       if (id === 3) {
-        this.tabs[0].icon = 'icon-shouye1';
-        this.tabs[1].icon = 'icon-shuben-kongxin';
+        this.tabs[0].icon = 'icon-shouye1'
+        this.tabs[1].icon = 'icon-shuben-kongxin'
         this.tabs[2].icon = 'icon-zhanghao'
       }
-
     }
   }
 }
@@ -62,4 +60,3 @@ export default {
   }
 }
 </style>
-

@@ -24,7 +24,7 @@ export default {
   name: 'banner',
 
   props: {
-    imgs: Array, // 轮播图的数据 
+    imgs: Array, // 轮播图的数据
     pagination: {
       type: Boolean,
       default: true
@@ -42,7 +42,7 @@ export default {
         autoplay: {
           delay: 1000,
           stopOnLastSlide: false,
-          disableOnInteraction: true,
+          disableOnInteraction: true
         },
         pagination: this.pagination
           ? {

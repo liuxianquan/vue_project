@@ -47,12 +47,12 @@ const routes = [
     component: () => import('./views/mysign.vue')
   },
   {
-    //购物车
+    // 购物车
     path: '/cart',
     component: () => import('./views/acountlist/cart.vue')
   },
   {
-    //商品购买模块
+    // 商品购买模块
     path: '/shopping',
     component: () => import('./views/acountlist/shopping.vue')
   },
@@ -61,12 +61,12 @@ const routes = [
     component: () => import('./views/myzhuce.vue')
   },
   {
-    //登录页面
+    // 登录页面
     path: '/mylogin',
     component: () => import('./views/mylogin.vue')
   },
   {
-    //登录页面
+    // 登录页面
     path: '/order',
     component: () => import('./views/acountlist/order.vue')
   }

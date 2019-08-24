@@ -63,18 +63,18 @@ export default {
     ...mapState('cat', ['cats', 'msg']),
     ...mapGetters('cat', ['total']),
     isAllCheck: {
-      get() {
+      get () {
         return this.$store.getters['cat/isAllCheck']
       },
-      set(value) {
+      set (value) {
         this.$store.commit('cat/toggleCheck', value)
       }
     },
     checkedIds: {
-      get() {
+      get () {
         return this.$store.state.cat.checkedIds
       },
-      set(value) {
+      set (value) {
         this.$store.commit('cat/setCheckedIds', value)
       }
     }

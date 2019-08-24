@@ -18,7 +18,7 @@ export default {
   },
   methods: {
     fun1 (id) {
-      this.$emit("changeIcon", id);
+      this.$emit('changeIcon', id)
       // console.log(id)
     }
   },

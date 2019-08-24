@@ -16,7 +16,7 @@ export default {
   getters: {},
 
   mutations: {
-    login(state, payload) {
+    login (state, payload) {
       state.userInfo = payload.userInfo
       state.token = payload.token
     }
@@ -26,7 +26,7 @@ export default {
     /**
      * 登录
      */
-    handleLogin({ commit }, payload) {
+    handleLogin ({ commit }, payload) {
       request.post('http://localhost:8080/tapi/sign-in', payload).then(res => {
         console.log(router)
         if (res.code === 0) {

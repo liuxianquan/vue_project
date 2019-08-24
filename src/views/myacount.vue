@@ -34,11 +34,11 @@ export default {
   data () {
     return {
       userInfo:
-        JSON.parse(localStorage.getItem('userInfo')) ?
-          JSON.parse(localStorage.getItem('userInfo')) :
-          {
+        JSON.parse(localStorage.getItem('userInfo'))
+          ? JSON.parse(localStorage.getItem('userInfo'))
+          : {
             avatar: 'https://edu-image.nosdn.127.net/7c5a8d29-ce20-4f97-a3a6-49872772667d.png?imageView&quality=100&thumbnail=100y100',
-            username: '登录/注册',
+            username: '登录/注册'
           },
       list: [
         { id: 1, text: '我的订单', icons: 'icon-place-order', href: '/order' },
@@ -49,10 +49,10 @@ export default {
     }
   },
   computed: {
-    ...mapState('cat', ['cats']),
-    getUsername () {
-      return this.userInfo = JSON.parse(localStorage.getItem('userInfo'))
-    }
+    ...mapState('cat', ['cats'])
+    // getUsername () {
+    //   return this.userInfo = JSON.parse(localStorage.getItem('userInfo'))
+    // }
   }
 }
 </script>

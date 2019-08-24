@@ -9,7 +9,6 @@ export default {
   created () {
     request.post('http://localhost:8080/tapi/getorder').then(res => {
       console.log(res)
-
     })
   }
 }
