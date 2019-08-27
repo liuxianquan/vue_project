@@ -3,7 +3,7 @@
     "infoDtoList": null,
     "focusDtoList": [
       {
-        "id": null,
+        "id": 1,
         "targetType": 0,
         "targetTo": "https://mooc.study.163.com/smartSpec/detail/1001452001.htm",
         "photoUrl": "http://edu-image.nosdn.127.net/8064643ce68748e5a45c90aff1b4bb63.jpg?imageView&quality=100",
@@ -19,7 +19,7 @@
         "courseCardVo": null
       },
       {
-        "id": null,
+        "id": 2,
         "targetType": 0,
         "targetTo": "https://mooc.study.163.com/smartSpec/detail/1001437003.htm",
         "photoUrl": "http://edu-image.nosdn.127.net/e6def5e4f7b944a7aed683a866e20157.png?imageView&quality=100",
@@ -35,7 +35,7 @@
         "courseCardVo": null
       },
       {
-        "id": null,
+        "id": 3,
         "targetType": 0,
         "targetTo": "https://study.163.com/course/introduction/1006547020.htm",
         "photoUrl": "http://edu-image.nosdn.127.net/e909cd9448dc4ef18a29392704ecc527.jpg?imageView&quality=100",
@@ -51,7 +51,7 @@
         "courseCardVo": null
       },
       {
-        "id": null,
+        "id": 4,
         "targetType": 0,
         "targetTo": "https://study.163.com/course/introduction.htm?courseId=1209449829&utm_source=qq.com&utm_medium=group_message&utm_campaign=business&utm_content=pythonxiaoka03",
         "photoUrl": "http://edu-image.nosdn.127.net/b5be3b8955c54ab5aad42e04f755b682.jpg?imageView&quality=100",
@@ -67,7 +67,7 @@
         "courseCardVo": null
       },
       {
-        "id": null,
+        "id": 5,
         "targetType": 0,
         "targetTo": "https://study.163.com/course/introduction/1209166858.htm",
         "photoUrl": "http://edu-image.nosdn.127.net/d340dc0f90254ea19748f42302c9fcf2.png?imageView&quality=100",
@@ -83,7 +83,7 @@
         "courseCardVo": null
       },
       {
-        "id": null,
+        "id": 6,
         "targetType": 0,
         "targetTo": "https://study.163.com/course/introduction/1004060025.htm",
         "photoUrl": "http://edu-image.nosdn.127.net/b58e57fb9144446684444e246a63d84e.jpg?imageView&quality=100",
@@ -99,7 +99,7 @@
         "courseCardVo": null
       },
       {
-        "id": null,
+        "id": 7,
         "targetType": 0,
         "targetTo": "https://study.163.com/course/introduction/1209188809.htm",
         "photoUrl": "http://edu-image.nosdn.127.net/9f33e4d0e3e547b884e1ae1bc53d7856.jpg?imageView&quality=100",
